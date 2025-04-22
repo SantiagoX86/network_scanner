@@ -1,3 +1,5 @@
 #!/usr/bin/env python
 
-import scapy.all
+import scapy.all as scapy
+
+
