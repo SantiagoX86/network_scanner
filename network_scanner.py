@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 
 import scapy.all as scapy
+import optparse
+
+parser = optparse.OptionParser()
+parser.add_option("-t",
+                  "--target",
+                  dest="ip_range",
+                  help="IP range of network in which to search for devices")
+(options, arguments) = parser.parse_args()
 
 def scan(ip):
     arp_request = scapy.ARP(pdst=ip)
@@ -18,5 +26,6 @@ def print_result(results_list):
     for client in results_list:
         print(client["ip"] + "\t\t\t" + client["MAC"])
 
-scan_result = scan("192.168.59.1/24")
+# scan_result = scan("192.168.59.1/24")
+scan_result = scan(options.ip_range)
 print_result(scan_result)
