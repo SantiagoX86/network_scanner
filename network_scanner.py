@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 import scapy.all as scapy
-import optparse
+import argparse
 
-parser = optparse.OptionParser()
-parser.add_option("-t",
+parser = argparse.ArgumentParser()
+parser.add_argument("-t",
                   "--target",
                   dest="ip_range",
                   help="IP range of network in which to search for devices")
-(options, arguments) = parser.parse_args()
+(options) = parser.parse_args()
 
 def scan(ip):
     arp_request = scapy.ARP(pdst=ip)
